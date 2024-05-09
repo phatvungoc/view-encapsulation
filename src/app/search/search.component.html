@@ -1,0 +1,13 @@
+<div>
+    <input #searchInput type="text" placeholder="Search">
+    <ul>
+        <li *ngFor="let result of searchResults" (click)="addFoodRecently(result.food)">{{ result.food }}</li>
+    </ul>
+
+    <div *ngIf="!searchResults.length">
+        Recently Search
+        <ul>
+            <li *ngFor="let food of recentSearches$ |async">{{food}}</li>
+        </ul>
+    </div>
+</div>
