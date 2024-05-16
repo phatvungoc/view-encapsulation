@@ -1,5 +1,6 @@
 <div>
     <input #searchInput type="text" placeholder="Search">
+    <button (click)="handleSearch(searchInput)">Search</button>
     <ul>
         <li *ngFor="let result of searchResults" (click)="addFoodRecently(result.food)">{{ result.food }}</li>
     </ul>

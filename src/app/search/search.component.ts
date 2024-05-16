@@ -6,7 +6,7 @@ import {
     switchMap,
     tap,
 } from "rxjs/operators";
-import { SearchFoodService } from "./search-food.service";
+import { SearchFoodService, foodList } from "./search-food.service";
 
 @Component({
     selector: "app-search-food",
@@ -40,9 +40,16 @@ export class SearchComponent {
                 ) // Gọi API tìm kiếm và chuyển đổi kết quả
             )
             .subscribe((results: string[]) => {
-                console.log(results);
                 this.searchResults = results;
             });
+    }
+
+    handleSearch(e: any) {
+        console.log(e.value);
+        this.searchService.fuzzySearch(e.value).subscribe((value) => {
+            console.log("search===", value);
+            this.searchResults = value;
+        });
     }
 
     addFoodRecently(food: any) {
