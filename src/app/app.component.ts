@@ -4,9 +4,9 @@ import { Component, ViewEncapsulation } from "@angular/core";
     selector: "app-root",
     template: `
         <app-search-food></app-search-food>
-        <app-no-encapsulation></app-no-encapsulation>
+        <!-- <app-no-encapsulation></app-no-encapsulation>
         <app-emulated-encapsulation></app-emulated-encapsulation>
-        <app-shadow-dom-encapsulation></app-shadow-dom-encapsulation>
+        <app-shadow-dom-encapsulation></app-shadow-dom-encapsulation> -->
     `,
     styles: [
         `

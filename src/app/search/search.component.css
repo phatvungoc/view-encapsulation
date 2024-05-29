@@ -1,0 +1,26 @@
+.search-container {
+    position: relative;
+}
+
+.dropdown {
+    border: 2px solid red;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: absolute;
+    background: white;
+    z-index: 1000; /* Điều chỉnh giá trị này nếu cần */
+    width: 100%; /* Để dropdown có cùng chiều rộng với input */
+    top: 100%; /* Đặt ngay dưới input */
+}
+
+.dropdown li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: blue;
+}

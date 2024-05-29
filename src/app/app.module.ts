@@ -6,6 +6,8 @@ import { NoEncapsulationComponent } from "./no-encapsulation.component";
 import { ShadowDomEncapsulationComponent } from "./shadow-dom-encapsulation.component";
 import { EmulatedEncapsulationComponent } from "./emulated-encapsulation.component";
 import { SearchComponent } from "./search/search.component";
+import { FormsModule } from "@angular/forms";
+import { FoodComponent } from './food/food.component';
 
 @NgModule({
     declarations: [
@@ -14,8 +16,9 @@ import { SearchComponent } from "./search/search.component";
         ShadowDomEncapsulationComponent,
         EmulatedEncapsulationComponent,
         SearchComponent,
+        FoodComponent,
     ],
-    imports: [BrowserModule],
+    imports: [BrowserModule, FormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })

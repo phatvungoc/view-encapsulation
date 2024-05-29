@@ -1,5 +1,5 @@
-import { Component, ViewChild, ElementRef } from "@angular/core";
-import { Observable, fromEvent } from "rxjs";
+import { Component, ViewChild, ElementRef, HostListener } from "@angular/core";
+import { Observable, Subject, fromEvent } from "rxjs";
 import {
     debounceTime,
     distinctUntilChanged,
@@ -11,16 +11,37 @@ import { SearchFoodService, foodList } from "./search-food.service";
 @Component({
     selector: "app-search-food",
     templateUrl: "./search.component.html",
+    styleUrls: ["./search.component.css"],
 })
 export class SearchComponent {
     @ViewChild("searchInput", { static: true }) searchInput!: ElementRef;
     searchResults: any[] = [];
     recentSearches$: Observable<any[]> = new Observable();
+    searchTerm: string = "";
+
+    showDropdown: boolean = false;
+    filteredFoods: any[] = [];
+    private searchSubject: Subject<string> = new Subject();
+
+    @ViewChild("container", { static: true }) container!: ElementRef;
 
     constructor(public searchService: SearchFoodService) {}
 
     ngOnInit() {
         this.recentSearches$ = this.searchService.recentSearch();
+        this.searchSubject
+            .pipe(
+                debounceTime(2000) // thời gian debounce 300ms
+            )
+            .subscribe((searchValue) => {
+                this.filteredFoods = foodList.filter((food) => {
+                    console.log("===food", food);
+                    return food.food
+                        .toLowerCase()
+                        .includes(searchValue.toLowerCase());
+                });
+                this.showDropdown = this.filteredFoods.length > 0;
+            });
     }
 
     get isSearching(): boolean {
@@ -54,5 +75,18 @@ export class SearchComponent {
 
     addFoodRecently(food: any) {
         this.searchService.addRecentSearch(food);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    onSearchChange(searchValue: string): void {
+        this.searchSubject.next(searchValue);
+    }
+
+    @HostListener("document:click", ["$event"])
+    onClickOutside(event: Event): void {
+        if (!this.container.nativeElement.contains(event.target)) {
+            this.showDropdown = false;
+        }
     }
 }

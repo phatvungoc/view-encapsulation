@@ -11,4 +11,23 @@
             <li *ngFor="let food of recentSearches$ |async">{{food}}</li>
         </ul>
     </div>
+
+    <div #container class="search-container">
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange($event)"
+            placeholder="Search for food..." (focus)="showDropdown = true">
+        <ul *ngIf="showDropdown && filteredFoods.length > 0" class="dropdown">
+            <li *ngFor="let food of filteredFoods">
+                <strong>{{ food.food }}</strong><br>
+                <small>{{ food.description }}</small>
+            </li>
+        </ul>
+    </div>
+
+    <div class="food-description">
+        Kimchi dsadasdasdasd aasdad asdsad asd asds asdad đa sd asd asda sdsad asd ád
+    </div>
+    <div class="food-description">
+        Kimchi.....
+    </div>
+
 </div>
