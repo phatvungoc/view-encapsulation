@@ -1,34 +1,43 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+// import { Component, ViewEncapsulation } from "@angular/core";
+
+// @Component({
+//     selector: "app-root",
+//     template: `
+//         <app-food></app-food>
+//         <!-- <app-search-food></app-search-food> -->
+//         <!-- <app-no-encapsulation></app-no-encapsulation>
+//         <app-emulated-encapsulation></app-emulated-encapsulation>
+//         <app-shadow-dom-encapsulation></app-shadow-dom-encapsulation> -->
+//     `,
+//     styles: [
+//         `
+//             app-no-encapsulation,
+//             app-emulated-encapsulation,
+//             app-shadow-dom-encapsulation {
+//                 display: block;
+//                 max-width: 500px;
+//                 padding: 5px;
+//                 margin: 5px 0;
+//             }
+//         `,
+//         "app-no-encapsulation { border: solid 2px red; }",
+//         "app-emulated-encapsulation { border: solid 2px green; }",
+//         "app-shadow-dom-encapsulation { border: solid 2px blue; }",
+//     ],
+//     encapsulation: ViewEncapsulation.None,
+// })
+// export class AppComponent {}
+
+// /*
+// Copyright Google LLC. All Rights Reserved.
+// Use of this source code is governed by an MIT-style license that
+// can be found in the LICENSE file at https://angular.io/license
+// */
+
+import { Component, ElementRef, ViewChild } from "@angular/core";
 
 @Component({
     selector: "app-root",
-    template: `
-        <app-search-food></app-search-food>
-        <!-- <app-no-encapsulation></app-no-encapsulation>
-        <app-emulated-encapsulation></app-emulated-encapsulation>
-        <app-shadow-dom-encapsulation></app-shadow-dom-encapsulation> -->
-    `,
-    styles: [
-        `
-            app-no-encapsulation,
-            app-emulated-encapsulation,
-            app-shadow-dom-encapsulation {
-                display: block;
-                max-width: 500px;
-                padding: 5px;
-                margin: 5px 0;
-            }
-        `,
-        "app-no-encapsulation { border: solid 2px red; }",
-        "app-emulated-encapsulation { border: solid 2px green; }",
-        "app-shadow-dom-encapsulation { border: solid 2px blue; }",
-    ],
-    encapsulation: ViewEncapsulation.None,
+    template: ` <app-food></app-food> `,
 })
 export class AppComponent {}
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

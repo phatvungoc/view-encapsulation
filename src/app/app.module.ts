@@ -7,7 +7,10 @@ import { ShadowDomEncapsulationComponent } from "./shadow-dom-encapsulation.comp
 import { EmulatedEncapsulationComponent } from "./emulated-encapsulation.component";
 import { SearchComponent } from "./search/search.component";
 import { FormsModule } from "@angular/forms";
-import { FoodComponent } from './food/food.component';
+import { FoodComponent } from "./food/food.component";
+import { OverlayModule } from "@angular/cdk/overlay";
+import { PortalModule } from "@angular/cdk/portal";
+import { OverlayService } from "./food/overlay.service";
 
 @NgModule({
     declarations: [
@@ -18,8 +21,8 @@ import { FoodComponent } from './food/food.component';
         SearchComponent,
         FoodComponent,
     ],
-    imports: [BrowserModule, FormsModule],
-    providers: [],
+    imports: [BrowserModule, FormsModule, OverlayModule, PortalModule],
+    providers: [OverlayService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

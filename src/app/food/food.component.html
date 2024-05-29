@@ -1,5 +1,4 @@
-<ng-template #foodListTemplate>
-    <div class="food-list">
-        <div *ngFor="let food of foods">{{ food }}</div>
-    </div>
-</ng-template>
+<input #foodInput (input)="onInputChange($event)" placeholder="Search food..." />
+<div class="food-list" *ngIf="showList && filteredFoods.length" #foodList>
+    <div *ngFor="let food of filteredFoods">{{ food }}</div>
+</div>
