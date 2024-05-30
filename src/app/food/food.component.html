@@ -1,4 +1,13 @@
-<input #foodInput (input)="onInputChange($event)" placeholder="Search food..." />
-<div class="food-list" *ngIf="showList && filteredFoods.length" #foodList>
-    <div *ngFor="let food of filteredFoods">{{ food }}</div>
-</div>
+<input #foodInput (input)="onInputChange($event)" cdkOverlayOrigin (click)="showList = !showList"
+    #trigger="cdkOverlayOrigin" />
+
+<ng-template #foodList cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showList"
+    (overlayOutsideClick)="showList = false" [cdkConnectedOverlayOffsetX]="50">
+    <app-food-list [filteredFoods]="filteredFoods"></app-food-list>
+</ng-template>
+<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magnam natus quo vero tenetur vel aspernatur ad
+    iure labore accusamus facilis necessitatibus ut, ea neque harum exercitationem eius magni aut?</div>
+<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magnam natus quo vero tenetur vel aspernatur ad
+    iure labore accusamus facilis necessitatibus ut, ea neque harum exercitationem eius magni aut?</div>
+<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magnam natus quo vero tenetur vel aspernatur ad
+    iure labore accusamus facilis necessitatibus ut, ea neque harum exercitationem eius magni aut?</div>

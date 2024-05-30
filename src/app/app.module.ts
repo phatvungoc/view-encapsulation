@@ -11,6 +11,7 @@ import { FoodComponent } from "./food/food.component";
 import { OverlayModule } from "@angular/cdk/overlay";
 import { PortalModule } from "@angular/cdk/portal";
 import { OverlayService } from "./food/overlay.service";
+import { FoodListComponent } from "./food/food-list.component";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,13 @@ import { OverlayService } from "./food/overlay.service";
         SearchComponent,
         FoodComponent,
     ],
-    imports: [BrowserModule, FormsModule, OverlayModule, PortalModule],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        OverlayModule,
+        PortalModule,
+        FoodListComponent,
+    ],
     providers: [OverlayService],
     bootstrap: [AppComponent],
 })

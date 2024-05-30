@@ -1,12 +1,7 @@
 import { Injectable, ComponentRef } from "@angular/core";
-import {
-    ConnectionPositionPair,
-    Overlay,
-    OverlayRef,
-} from "@angular/cdk/overlay";
-import { ComponentPortal } from "@angular/cdk/portal";
+import { Overlay, OverlayRef } from "@angular/cdk/overlay";
+import { TemplatePortal } from "@angular/cdk/portal";
 import { FoodComponent } from "./food.component";
-import { TemplatePortalDirective } from "@angular/cdk/portal";
 
 @Injectable({
     providedIn: "root",
@@ -17,16 +12,17 @@ export class OverlayService {
 
     constructor(private overlay: Overlay) {}
 
-    public open(templatePortal: TemplatePortalDirective) {
+    public open(templatePortal: TemplatePortal) {
+        console.log("===templatePortal", templatePortal);
         if (!this.overlayRef) {
             const positionStrategy = this.overlay
                 .position()
                 .flexibleConnectedTo(document.getElementById("foodInput")!)
                 .withPositions([
                     {
-                        originX: "end",
+                        originX: "start",
                         originY: "bottom",
-                        overlayX: "end",
+                        overlayX: "start",
                         overlayY: "bottom",
                     },
                 ]);
